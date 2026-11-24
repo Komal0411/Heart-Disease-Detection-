@@ -6,13 +6,6 @@ heart disease from **8 core clinical attributes** and explains the result.
 Built on the **UCI Heart Disease** dataset (920 records from four international
 cohorts: Cleveland, Hungary, Switzerland, VA Long Beach).
 
-![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688?logo=fastapi&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3+-F7931E?logo=scikitlearn&logoColor=white)
-![Tests](https://img.shields.io/badge/tests-8%20passing-brightgreen)
-
----
-
 ## What it does
 
 1. The user enters **8 values** — age, sex, chest-pain type, resting blood pressure,
