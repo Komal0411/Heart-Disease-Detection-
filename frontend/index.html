@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heart Disease Risk Predictor</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/>
+        </svg>
+      </div>
+      <div>
+        <h1>Heart Disease Risk Predictor</h1>
+        <p class="sub">Machine learning screening from 8 clinical attributes</p>
+      </div>
+    </div>
+    <div class="badge" id="modelBadge">loading model…</div>
+  </header>
+
+  <main class="layout">
+    <!-- ───────────── FORM ───────────── -->
+    <section class="card form-card">
+      <div class="card-head">
+        <h2>Patient details</h2>
+        <div class="examples">
+          <button type="button" class="ghost" data-example="low">Low-risk example</button>
+          <button type="button" class="ghost" data-example="high">High-risk example</button>
+        </div>
+      </div>
+
+      <form id="predictForm">
+        <fieldset>
+          <legend>Patient profile</legend>
+          <div class="grid">
+            <label class="field">
+              <span>Age (years)</span>
+              <input type="number" name="age" min="18" max="100" value="54" required />
+            </label>
+            <label class="field">
+              <span>Sex</span>
+              <select name="sex" id="sex" required></select>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Vitals and laboratory</legend>
+          <div class="grid">
+            <label class="field">
+              <span>Resting blood pressure <em>mm Hg</em></span>
+              <input type="number" name="trestbps" min="80" max="220" step="1" value="130" required />
+            </label>
+            <label class="field">
+              <span>Serum cholesterol <em>mg/dl</em></span>
+              <input type="number" name="chol" min="100" max="600" step="1" value="240" required />
+            </label>
+            <label class="field">
+              <span>Maximum heart rate <em>bpm</em></span>
+              <input type="number" name="thalch" min="60" max="220" step="1" value="150" required />
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Cardiac assessment</legend>
+          <div class="grid">
+            <label class="field">
+              <span>Chest pain type</span>
+              <select name="cp" id="cp" required></select>
+            </label>
+            <label class="field">
+              <span>ST depression (oldpeak)</span>
+              <input type="number" name="oldpeak" min="-3" max="7" step="0.1" value="1.0" required />
+            </label>
+            <div class="field">
+              <span>Exercise-induced angina</span>
+              <div class="switch">
+                <input type="checkbox" name="exang" id="exang" />
+                <label for="exang" class="slider"></label>
+                <span class="switch-text" id="exangText">No</span>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="primary" id="submitBtn">
+          <span class="btn-label">Assess risk</span>
+          <span class="spinner" hidden></span>
+        </button>
+        <p class="disclaimer">
+          Educational tool only. This is not a medical diagnosis — always consult a qualified clinician.
+        </p>
+      </form>
+    </section>
+
+    <!-- ───────────── RESULT ───────────── -->
+    <section class="card result-card" id="resultCard">
+      <div class="empty" id="emptyState">
+        <div class="pulse-ring"></div>
+        <h2>Awaiting assessment</h2>
+        <p>Fill in the patient details and press <strong>Assess risk</strong> to see the predicted probability, the contributing factors and recommended next steps.</p>
+      </div>
+
+      <div id="resultBody" hidden>
+        <div class="result-head">
+          <div class="gauge" id="gauge">
+            <svg viewBox="0 0 120 120">
+              <circle class="gauge-track" cx="60" cy="60" r="52"></circle>
+              <circle class="gauge-fill" id="gaugeFill" cx="60" cy="60" r="52"></circle>
+            </svg>
+            <div class="gauge-label">
+              <strong id="probValue">0%</strong>
+              <span>probability</span>
+            </div>
+          </div>
+          <div class="verdict">
+            <span class="chip" id="riskChip">—</span>
+            <h2 id="verdictLabel">—</h2>
+            <p id="verdictMeta" class="muted">—</p>
+          </div>
+        </div>
+
+        <div class="section" id="factorsSection">
+          <h3>Observed risk factors</h3>
+          <ul class="factors" id="factorsList"></ul>
+        </div>
+
+        <div class="section" id="driversSection">
+          <h3>Model's most influential features</h3>
+          <div class="pills" id="driversList"></div>
+        </div>
+
+        <div class="section">
+          <h3>Recommended next steps</h3>
+          <ul class="recs" id="recsList"></ul>
+        </div>
+
+        <p class="footnote" id="resultFootnote"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span id="footerModel">—</span>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

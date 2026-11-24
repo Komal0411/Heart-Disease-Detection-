@@ -1,0 +1,78 @@
+{
+  "Logistic Regression": {
+    "accuracy": 0.8225,
+    "precision": 0.8333,
+    "recall": 0.8497,
+    "specificity": 0.7886,
+    "f1": 0.8414,
+    "roc_auc": 0.8847,
+    "brier": 0.1365,
+    "cv_roc_auc": 0.879,
+    "train_seconds": 20.95,
+    "best_params": {
+      "C": "0.1"
+    }
+  },
+  "Random Forest": {
+    "accuracy": 0.8043,
+    "precision": 0.8113,
+    "recall": 0.8431,
+    "specificity": 0.7561,
+    "f1": 0.8269,
+    "roc_auc": 0.8988,
+    "brier": 0.1302,
+    "cv_roc_auc": 0.8757,
+    "train_seconds": 5.44,
+    "best_params": {
+      "max_depth": "5",
+      "n_estimators": "100"
+    }
+  },
+  "Support Vector Machine": {
+    "accuracy": 0.8116,
+    "precision": 0.8217,
+    "recall": 0.8431,
+    "specificity": 0.7724,
+    "f1": 0.8323,
+    "roc_auc": 0.8905,
+    "brier": 0.1299,
+    "cv_roc_auc": 0.8759,
+    "train_seconds": 0.78,
+    "best_params": {
+      "C": "1",
+      "kernel": "rbf"
+    }
+  },
+  "Gradient Boosting": {
+    "accuracy": 0.7971,
+    "precision": 0.8129,
+    "recall": 0.8235,
+    "specificity": 0.7642,
+    "f1": 0.8182,
+    "roc_auc": 0.8853,
+    "brier": 0.1375,
+    "cv_roc_auc": 0.8644,
+    "train_seconds": 2.36,
+    "best_params": {
+      "learning_rate": "0.1",
+      "max_depth": "3",
+      "n_estimators": "100"
+    }
+  },
+  "XGBoost": {
+    "accuracy": 0.7971,
+    "precision": 0.817,
+    "recall": 0.817,
+    "specificity": 0.7724,
+    "f1": 0.817,
+    "roc_auc": 0.8868,
+    "brier": 0.1378,
+    "cv_roc_auc": 0.8648,
+    "train_seconds": 1.47,
+    "best_params": {
+      "learning_rate": "0.1",
+      "max_depth": "3",
+      "n_estimators": "100"
+    }
+  }
+}

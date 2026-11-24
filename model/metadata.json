@@ -1,0 +1,64 @@
+{
+  "dataset": "UCI Heart Disease (920 records, 4 cohorts)",
+  "n_samples": 920,
+  "features": [
+    "age",
+    "trestbps",
+    "chol",
+    "thalch",
+    "oldpeak",
+    "sex",
+    "cp",
+    "exang"
+  ],
+  "numeric_features": [
+    "age",
+    "trestbps",
+    "chol",
+    "thalch",
+    "oldpeak"
+  ],
+  "categorical_features": [
+    "sex",
+    "cp",
+    "exang"
+  ],
+  "categories": {
+    "sex": [
+      "Female",
+      "Male"
+    ],
+    "cp": [
+      "asymptomatic",
+      "atypical angina",
+      "non-anginal",
+      "typical angina"
+    ],
+    "exang": [
+      "False",
+      "True"
+    ]
+  },
+  "target_meaning": {
+    "0": "No heart disease",
+    "1": "Heart disease present"
+  },
+  "selected_model": "Random Forest",
+  "train_size": 644,
+  "test_size": 276,
+  "metrics": {
+    "accuracy": 0.8043,
+    "precision": 0.8113,
+    "recall": 0.8431,
+    "specificity": 0.7561,
+    "f1": 0.8269,
+    "roc_auc": 0.8988,
+    "brier": 0.1302,
+    "cv_roc_auc": 0.8757,
+    "train_seconds": 5.44,
+    "best_params": {
+      "max_depth": "5",
+      "n_estimators": "100"
+    }
+  }
+}
